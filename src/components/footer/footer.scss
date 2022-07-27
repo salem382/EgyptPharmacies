@@ -1,0 +1,11 @@
+@import '../../style/variables.scss';
+.footer {
+    background-color: $blue-color;
+    border-bottom: 1px solid #ddd;
+    li {
+        line-height: 1.8;
+    }
+}
+.copy-right {
+    background-color: $blue-color;
+}
