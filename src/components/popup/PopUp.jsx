@@ -4,6 +4,7 @@ import {faXmark, faHeart} from '@fortawesome/free-solid-svg-icons';
 import {useDispatch, useSelector} from 'react-redux';
 import {closePopUp} from '../../store/popUpSlice';
 import {addToFavItems} from '../../store/favSlice'
+import {toast} from 'react-toastify' ;
 
 const PopUp = () => {
 
@@ -21,9 +22,15 @@ const PopUp = () => {
             setIsFav(false)
          }
     }
-    const handleFavClick = () => {
-        dispatch(addToFavItems(item))
-        setIsFav((prev) => !prev);
+   const handleFavClick = () => {
+        if (localStorage.getItem('ecommerceToken') === null) {
+            toast.error(' يجب عليك تسجيل الدخول اولا للاضافه الي المفضله',{
+                position: 'top-center'
+            });
+        } else {
+            dispatch(addToFavItems(item))
+            setIsFav((prev) => !prev);
+        }
     }
     useEffect(() => {
         checkFav();
