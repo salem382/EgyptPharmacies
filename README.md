@@ -31,5 +31,6 @@ To Visit App:
 * axios
 * joi for Validation
 * jwt-decode
+* React-toastify
 
 
