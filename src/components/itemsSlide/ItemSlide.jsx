@@ -8,6 +8,8 @@ import './itemSlider.scss';
 
 
 const ItemSlide = ({medicens}) => {
+
+  console.log('from item slider');
   
     return (
         <>
@@ -35,4 +37,4 @@ const ItemSlide = ({medicens}) => {
     )
 }
 
-export default React.memo(ItemSlide);
+export default ItemSlide
