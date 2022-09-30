@@ -28,6 +28,7 @@ const categorySlice = createSlice({
         },
         handleCheckBox : (state, action) => {
             let i = state.dependcyArr.indexOf(action.payload);
+            //kant mwagwada 4lhaa mknat4eaa hothaa
             if (i === -1) {
                 state.dependcyArr.push(action.payload)
             } else {
@@ -46,12 +47,12 @@ const categorySlice = createSlice({
             state.dependcyArr.forEach((ele) => {
                 let y = JSON.parse(JSON.stringify(state.itemsObj[ele]));
                 x.push(...y);
-            })
-            state.items = [...x]
+            });
+            state.items = [...x];
             let y = [...action.payload];
             
             let z = JSON.parse(JSON.stringify(state.items.filter(item => Number(item.price) >= Number(y[0]) && Number(item.price) <= Number(y[1])   )));
-            state.items = [...z]
+            state.items = [...z];
             localStorage.setItem('depArr',JSON.stringify(state.dependcyArr));
         },
         refreshPage : (state) => {

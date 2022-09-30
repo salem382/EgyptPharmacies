@@ -37,7 +37,7 @@ const PopUp = () => {
     },[show])
 
     return (
-        <div className="pop-up position-fixed w-100 h-100 top-0 start-0" style={{display:show ? 'block' : 'none',background:'rgba(0,0,0,0.7)',zIndex:'999'}}>
+        <div className="pop-up position-fixed w-100 h-100 top-50 translate-middle-y start-0" style={{display:show ? 'block' : 'none',background:'rgba(0,0,0,0.7)',zIndex:'999'}}>
             <div className="w-75 bg-white shadow position-absolute start-50 top-50 translate-middle rounded">
                 <div className = 'position-absolute bg-danger rounded-circle text-center' style={{width:'40px',height:'40px',lineHeight:'50px',top:'-10px',right:'-10px',cursor:'pointer'}}>
                     <FontAwesomeIcon onClick={() => dispatch(closePopUp())} className='fs-3 text-white' icon={faXmark}/>

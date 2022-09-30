@@ -43,7 +43,7 @@ const cardSlice = createSlice({
         },
         collectNewData:(state) => {
             let {totalAmount, totalQuantity} = state.cartItems.reduce((totalTemp,item) => {
-                const total = item.price * item.count;
+                let total = item.price * item.count;
                 totalTemp.totalAmount += total;
                 totalTemp.totalQuantity += item.count;
                 return totalTemp;

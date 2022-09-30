@@ -5,11 +5,16 @@ import { faArrowRightToBracket, faCartPlus, faImagePortrait, faXmark, faCartShop
 import { useEffect, useState, useRef } from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
-import {openCate} from '../../store/categorySlice';
-import {collectNewData, deleteItem, clearData} from '../../store/CardSlice';
 import {toast} from 'react-toastify' ;
 import jwtDecode from 'jwt-decode';
-import {searchIn} from '../../store/searchSlice'
+import {openCate} from '../../store/categorySlice';
+import {collectNewData, deleteItem, clearData} from '../../store/CardSlice';
+import {searchIn} from '../../store/searchSlice';
+
+
+//this is hill no header there is big mistakes here 
+//I was supposed to divided this big component to three component
+// upperHeader , meduimHeader and navbar
 
 const Header = () => {
 
@@ -17,13 +22,21 @@ const Header = () => {
     const cardState = useSelector(state => state.card);
     const inputSearch = useRef ();
     const {cartItems} = cardState;
+
+    //this is user Data name and last name
     const [userData, setUserData] = useState({})
+    //open sidebar and close it
     const [open, setOpen] = useState(false);
+    //open user menu and close it
     const [openUser, setOpenUser] = useState(false);
+    //open card and close it
     const [openCard, setOpenCard] = useState(false);
+    //store what i search about
     const [searcAbout, setSearchAbout] = useState('all');
     const dispatch = useDispatch ();
     const sideBar = useRef();
+
+    // open talabate form user menu
     const handlTalabatClick = () => {
         if (localStorage.getItem('ecommerceToken') !== null) {
             Navigate('/shoping')
@@ -34,6 +47,7 @@ const Header = () => {
         }
         setOpenUser(false)
     }
+    //log out
     const handleLog = () => {
         if (localStorage.getItem('ecommerceToken') !== null) {
             localStorage.removeItem('ecommerceToken')
@@ -43,9 +57,11 @@ const Header = () => {
         }
         setOpenUser(false)
     }
+    //open category component with send categry type
     const handleOpenCateg = (e) => {
         dispatch(openCate(e.target.id));
     }
+    //go to facorite
     const handleFavorite = () => {
         if (localStorage.getItem('ecommerceToken') !== null) {
             Navigate('/favorite')
@@ -55,22 +71,23 @@ const Header = () => {
             });
         }
     }
+    //put search about in search about
     const handleSelect = (e) => {
         setSearchAbout(e.target.value)
     }
+    // send to searchSlice what is search about
     const handleSearchSubmit = (e) => {
         e.preventDefault();
         let searchWord = inputSearch.current.value;
         dispatch(searchIn([searcAbout, searchWord]));
         Navigate('/search');
     }
+
     useEffect(() => {
         if (localStorage.getItem('ecommerceToken') !== null) {
             let x = localStorage.getItem('ecommerceToken')
             let y = jwtDecode(x)
             setUserData({...y});
-            console.log (userData)
-            console.log (userData)
         }
     }, [])
     useEffect(() => {
@@ -78,6 +95,9 @@ const Header = () => {
     },[cartItems, dispatch])
 
     useEffect(() => {
+        // tb3an dah big mistake lazem kwant ab3ad 3an askhdam al dom
+        // was ast5dam open in style to add object what i needed 
+        // open ? addObj : anotheObj
         open ? sideBar.current.classList.add('open') : sideBar.current.classList.remove('open') ;
     },[open])
     return (

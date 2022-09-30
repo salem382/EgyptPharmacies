@@ -10,7 +10,13 @@ import {addToFavItems} from '../../store/favSlice'
 
 const Card = ({data}) => {
 
+    //this is for add two themes add item || increase item
+    //and i found this is mistake an ana a5lyaa al a3tmaad an ana 
+    //adyaf two themes dependend in two place 
+    // y3nyaa kan mfrwas m3wal4yaa is found
+
     const [isFound, setIsFound] = useState(false);
+    // this for card item
     const [myItem, setMyItem] = useState({});
     const [isFav, setIsFav] = useState(false)
     const {cartItems} = useSelector(state => state.card) 
@@ -18,7 +24,11 @@ const Card = ({data}) => {
     const {favItems} = useSelector(state => state.fav)
     let c = null;
     const {show} = useSelector(state =>state.popUp)
+
     const checkFav = () => {
+        //3h4an lmaa ant2all mn safhaa lltanyaa al2yaa is fav not change
+        //y3nyaa lmam akwaan fya al categoty wa adoas favority mrh4yaa 3laa
+        //main page wa alayaa favroitr at8yaar
        let ii = favItems.find(item => item.name === data.name);
         if (ii !== undefined) {
             setIsFav(true)
@@ -27,14 +37,16 @@ const Card = ({data}) => {
         }
     }
     useEffect(() => {
-        //3lshan el performance kda h3mal search fea kwal al mnrgat 
-        // component did mount bass msh kal lma yahsal update fea al card
         c = cartItems.find(item => item.name === data.name);
     },[]) 
     useEffect(() => {
-        checkFav()
-    },[show]) 
+        //dyaa 3haan law dyaft fav mn al pop up
+        checkFav();
+    },[show])
+
     useEffect (() => {
+        // han al m4kalla al fo2aa 5alass al hyaa ana 5alat al item mo3tmaad
+        //3laa mknyann y3nyaa m42aa allah 3lyaa
         if (isFound || c !== undefined) {
             setIsFound(true);
             let x = cartItems.find(item => item.name === data.name);
@@ -69,7 +81,7 @@ const Card = ({data}) => {
         )
     }
     const handlePopUp = () => {
-        dispatch( openPopUp());
+        dispatch(openPopUp());
         dispatch(addItem(data));
     }
     const handleFavClick = () => {

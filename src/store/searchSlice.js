@@ -20,7 +20,6 @@ const searchSlice = createSlice({
     reducers:{
         searchIn : (state, action) => {
             state.items = [];
-            console.log (action.payload)
             let x = JSON.parse(JSON.stringify(state.itemsObj[action.payload[0]]));
             state.items.push(...x);
             let y =  state.items.filter(item =>item.name.includes(action.payload[1]));

@@ -6,6 +6,8 @@ import './slider.scss';
 
 const Slider = () => {
 
+    // in this case slider offers will be static -inshaallah- in future 
+    //i will make  it with api and adminDashboard can add or remove offers
     return (
         <div className="mt-4">
             <Swiper

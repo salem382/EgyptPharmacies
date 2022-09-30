@@ -9,7 +9,6 @@ import './itemSlider.scss';
 
 const ItemSlide = ({medicens}) => {
 
-  console.log('from item slider');
   
     return (
         <>

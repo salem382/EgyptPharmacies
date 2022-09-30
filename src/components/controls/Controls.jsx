@@ -12,9 +12,13 @@ const Controls = () => {
     const checkboxItems = [{arName:'مسكنات',enName:'msknat'},{arName:'عطور',enName:'otoar'},{arName:'صحة الرجل',enName:'sahatAlrajal'},{arName:'التغذيه الرياضيه',enName:'alryadyaa'},{arName:'الشعر و التصفيف',enName:'shaar'},{arName:'أدوية الكحه و الحساسيه',enName:'kohaa'}]
    
     return (
+        
+        //han kan mmkan ast5dam form 3h4an ab3at aldata lma a3mal on submit
+        //to improve UX w alsearch ykwan b Enter
+
         <div className="bg-white w-100 shadow-sm mt-1 p-3">
             <div className="pb-4 border-bottom">
-                <h6 className=" pt-4 mb-3 ">السعر</h6>
+                <h6 className="pt-4 mb-3">السعر</h6>
                 <div className="d-flex align-items-center">
                 <input ref={lowerCase} defaultValue ='3' className="form-control border-0" type='number'  style={{background:'#f1f1f1'}}/>
                 <label className="mx-2">الي</label>
